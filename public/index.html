@@ -11,29 +11,32 @@
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 </head>
 <body>
-
-    <audio class="hidden" id="backgroundMusic" controls>
-        <source src="./assets/sound/olymp.mp3" type="audio/mp3">
-    </audio>
-
-    <audio class="hidden" id="shotMusic" controls>
-        <source src="./assets/sound/shot.mp3" type="audio/mp3">
-    </audio>
-
     <div class="hidden" id="caption">World of Tanks Mini</div>
     <div id="overlay"></div>
     <canvas class="hidden" id="canvas1"></canvas>
 
-    <div id="startScreen">
+    <div class="menu" id="startScreen">
         <div>Wold of Tanks Mini</div>
         <input type="text" id="player1" placeholder="Player's name">
-        <button id="startGame">PLAY</button>
+        <button class="button disabled" id="next">NEXT</button>
     </div>
 
-    <div id="gameOverScreen" class="hidden">
-        <div>Wold of Tanks Mini</div>
+    <div class="menu hidden" id="startScreen2">
+        <div>Choose your tank</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <img class="tankImg" id="tankImg1" data-img="./assets/img/tankSmall.png" src="./assets/img/tankSmall.png">
+            <img class="tankImg" id="tankImg2" data-img="./assets/img/tankSmall2.png" src="./assets/img/tankSmall2.png">
+            <img class="tankImg" id="tankImg3" data-img="./assets/img/tankSmall3.png" src="./assets/img/tankSmall3.png">
+            <img class="tankImg" id="tankImg4" data-img="./assets/img/tankSmall4.png" src="./assets/img/tankSmall4.png">
+        </div>
+        <button class="button disabled" id="startGame">PLAY</button>
+    </div>
+
+    <p id="waitingScreen" class="saving hidden">Waiting for second player<span>.</span><span>.</span><span>.</span></p>
+
+    <div id="gameOverScreen" class="menu hidden">
         <div id="winner"></div>
-        <button id="restart">RESTART</button>
+        <button class="button" id="restart">RESTART</button>
     </div>
 
     <script type="module" src="script.js"></script>

@@ -10,11 +10,18 @@ let keyInputs = {};
 
 const startBtn = document.getElementById('startGame');
 const restartBtn = document.getElementById('restart');
+const nextBtn = document.getElementById('next');
+
 const startScreen = document.getElementById('startScreen');
+const startScreen2 = document.getElementById('startScreen2');
 const gameoverScreen = document.getElementById('gameOverScreen');
+const waitingScreen = document.getElementById('waitingScreen');
+
 const caption = document.getElementById('caption');
 const winnerDiv = document.getElementById('winner');
 const playerName = document.getElementById('player1');
+const tankImages = document.querySelectorAll('.tankImg');
+let selectedTank = "";
 
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
@@ -302,6 +309,13 @@ function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     animationFrame = requestAnimationFrame(animate);
 
+    // make sure at least 2 players are connected
+    if (frontendPlayers.length < 2) {
+        waitingScreen.classList.remove("hidden");
+        return;
+    }; 
+    waitingScreen.classList.add("hidden");
+
     // draw all the frontendPlayers in the frontendPlayers array
     frontendPlayers.forEach(frontendPlayer => {
         frontendPlayer.draw();
@@ -340,15 +354,29 @@ function animate() {
     socket.emit("keyDown", keyInputs);
 }
 
-startBtn.addEventListener("click", () => {
-    //document.getElementById('backgroundMusic').play();
 
-    // when user entered a name and pressed the play button
-    socket.emit("playerRegistered", playerName.value);
-    animate();
+
+playerName.addEventListener("input", (e) => {
+    e.target.value === "" ? nextBtn.classList.add("disabled") : nextBtn.classList.remove("disabled");
+})
+
+
+nextBtn.addEventListener("click", () => {
     startScreen.classList.add("hidden");
+    startScreen2.classList.remove("hidden");
+})
+
+startBtn.addEventListener("click", () => {
+    // when user entered a name and pressed the play button
+    socket.emit("playerRegistered", {
+        name: playerName.value,
+        image: selectedTank
+    });
+    animate();
+    startScreen2.classList.add("hidden");
     caption.classList.remove("hidden");
     canvas.classList.remove("hidden");
+ 
 })
 
 
@@ -361,3 +389,19 @@ function gameOver(winner) {
 restartBtn.addEventListener("click", () => {
     window.location.reload();
 })
+
+
+
+// Function to handle tank selection
+function handleTankSelection(e) {
+  tankImages.forEach((tankImg) => {
+    tankImg.classList.remove('selected');
+  });
+  e.target.classList.add('selected');
+  selectedTank = e.target.dataset.img;
+  startBtn.classList.remove("disabled");
+}
+
+tankImages.forEach((tankImg) => {
+  tankImg.addEventListener('click', handleTankSelection);
+});

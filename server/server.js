@@ -249,16 +249,17 @@ const objects = [
 
 io.on('connection', socket => {
     // only if player entered name and pressed play
-    socket.on("playerRegistered", playerName => {
+    socket.on("playerRegistered", playerInfos => {
         const player = {
             id: socket.id,
-            name: playerName,
+            name: playerInfos.name,
             x: Math.random() * 600,
             y: Math.random() * 700,
             width: 32,
             height: 32,
             rotation: 0,
             velocity: 2,
+            image: playerInfos.image
         }
         backendPlayers.push(player);
     
@@ -375,12 +376,6 @@ io.on('connection', socket => {
     });
 })
 
-
-
-
-
-
-
-server.listen(8000, () => {
+server.listen(3300, () => {
     console.log("listening on *:8000");
 });

@@ -19,6 +19,12 @@ body {
     display: none !important;
 }
 
+.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+}
+
 #overlay {
     margin: 0;
     width: 100%;
@@ -50,7 +56,7 @@ body {
     z-index: 10;
 }
 
-#startScreen, #gameOverScreen {
+.menu {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -71,12 +77,12 @@ body {
     gap: 15px;
 }
 
-#startScreen div, #gameOverScreen div {
+.menu div {
     font-family: 'BAD_GRUNGE';
     font-size: 72px;
 }
 
-#startScreen input {
+.menu input {
     font-size: 46px;
     font-family: 'BAD_GRUNGE';
     width: 50%;
@@ -86,7 +92,7 @@ body {
     padding-left: 10px;
 }
 
-#startScreen button, #gameOverScreen button {
+.button {
     font-size: 46px;
     font-family: 'BAD_GRUNGE';
     width: 50%;
@@ -94,4 +100,52 @@ body {
     background: rgba(0, 0, 0, 0.459);   
     border-radius: 2px;
     cursor: pointer;
+}
+
+#waitingScreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 64px;
+    font-family: 'BAD_GRUNGE';
+    color: black;
+    z-index: 20;
+}
+
+.tankImg {
+    transition: transform 0.2s ease;
+}
+
+.tankImg:hover {
+    transform: scale(1.2); 
+}
+
+.tankImg.selected {
+    transform: scale(1.2); 
+  }
+
+
+@keyframes blink {
+    0% {
+      opacity: .2;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: .2;
+    }
+}
+.saving span {
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+.saving span:nth-child(2) {
+    animation-delay: .2s;
+}
+.saving span:nth-child(3) {
+    animation-delay: .4s;
 }

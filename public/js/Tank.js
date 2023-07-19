@@ -8,7 +8,14 @@ export default class Tank {
 
       // Tank
       this.tank = new Image();
-      this.tank.src = './assets/img/tankSmall.png';
+      this.tank.src = playerInfos.image;
+      // this.tank2 = new Image();
+      // this.tank2.src = './assets/img/tankSmall2.png';
+      // this.tank3 = new Image();
+      // this.tank3.src = './assets/img/tankSmall3.png';
+      // this.tank4 = new Image();
+      // this.tank4.src = './assets/img/tankSmall4.png';
+
       this.id = playerInfos.id;
       this.name = playerInfos.name;
       this.tankX = playerInfos.x;
