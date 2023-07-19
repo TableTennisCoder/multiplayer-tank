@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World of Tanks Mini</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon.ico">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+
+    <audio class="hidden" id="backgroundMusic" controls>
+        <source src="./assets/sound/olymp.mp3" type="audio/mp3">
+    </audio>
+
+    <audio class="hidden" id="shotMusic" controls>
+        <source src="./assets/sound/shot.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="hidden" id="caption">World of Tanks Mini</div>
+    <div id="overlay"></div>
+    <canvas class="hidden" id="canvas1"></canvas>
+
+    <div id="startScreen">
+        <div>Wold of Tanks Mini</div>
+        <input type="text" id="player1" placeholder="Player's name">
+        <button id="startGame">PLAY</button>
+    </div>
+
+    <div id="gameOverScreen" class="hidden">
+        <div>Wold of Tanks Mini</div>
+        <div id="winner"></div>
+        <button id="restart">RESTART</button>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

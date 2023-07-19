@@ -1,0 +1,97 @@
+@font-face {
+    font-family: 'BAD_GRUNGE';
+    src: url('./assets/fonts/BAD_GRUNGE.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('./assets/img/Ground_Tile_01_A.png');
+    background-repeat: repeat;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#overlay {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+#caption {
+    font-size: 72px;
+    font-family: 'BAD_GRUNGE';
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    opacity: 0.5;
+}
+
+#canvas1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1280px;
+    height: 768px;
+    background-image: url('./assets/img/map.png');
+    border-radius: 20px;
+    z-index: 10;
+}
+
+#startScreen, #gameOverScreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 350px;
+    background-image: url('./assets/img/bg.jpg');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    z-index: 200;
+    border-radius: 4px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#startScreen div, #gameOverScreen div {
+    font-family: 'BAD_GRUNGE';
+    font-size: 72px;
+}
+
+#startScreen input {
+    font-size: 46px;
+    font-family: 'BAD_GRUNGE';
+    width: 50%;
+    color: white;
+    background: rgba(0, 0, 0, 0.459);   
+    border-radius: 2px;
+    padding-left: 10px;
+}
+
+#startScreen button, #gameOverScreen button {
+    font-size: 46px;
+    font-family: 'BAD_GRUNGE';
+    width: 50%;
+    color: #6F756F;
+    background: rgba(0, 0, 0, 0.459);   
+    border-radius: 2px;
+    cursor: pointer;
+}
